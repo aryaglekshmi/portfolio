@@ -6,4 +6,10 @@
     border-bottom: 2px solid;
     border-image: linear-gradient(to right, #00c6ff, #0072ff) 1;
 }
-  
+.bg-primary {
+    background: linear-gradient(to bottom, #f7f7f7, #9dbbdf);
+}
+
+.swiper {
+    height: 100%;
+}

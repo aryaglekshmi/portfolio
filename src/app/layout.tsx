@@ -21,10 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} bg-light w-screen h-screen m-0 p-0`}>
-        <div className="flex justify-between flex-col relative m-auto">
+      <body className={`${montserrat.variable} bg-primary w-screen h-screen m-0 p-0`}>
+        <div className="flex justify-between flex-col relative h-full">
           <Header />
-          <div className="px-20">
+          <div className="px-20 w-full pb-5" style={{ height: 'calc(100% - 130px)' }}>
           {children}
           </div>
           {/* <Footer /> */}

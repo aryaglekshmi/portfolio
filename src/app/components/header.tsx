@@ -24,7 +24,7 @@ function Header() {
   };
 
   return (
-    <div className="sticky top-0 py-5 text-base flex justify-between items-center px-20">
+    <div className="sticky top-0 py-5 text-base flex justify-between items-center px-20 flex-none">
       <div>
         <Image src="/logo.svg" alt="Logo" width={90} height={90} />
       </div>
