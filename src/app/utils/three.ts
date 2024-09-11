@@ -156,7 +156,7 @@ function bgSnow() {
       const controls= new OrbitControls(camera,renderer.domElement);
 
       const init = () => {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 50; i++) {
           const geometry = new THREE.SphereGeometry(1, 32, 32);
           const material = new THREE.MeshStandardMaterial({
             color: 0x1e3a8a, // Dark blue color

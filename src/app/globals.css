@@ -6,10 +6,30 @@
     border-bottom: 2px solid;
     border-image: linear-gradient(to right, #00c6ff, #0072ff) 1;
 }
+.border-top-gradient {
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, #00c6ff, #0072ff) 1;
+}
 .bg-primary {
     background: linear-gradient(to bottom, #f7f7f7, #9dbbdf);
+}
+
+.bgImg {
+    background-image: url('/full_front_back.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .swiper {
     height: 100%;
 }
+.text-primary {
+    color: #0b366a;
+}
+.box {
+    width: 200px;
+    height: 200px;
+    background: red;
+  }
+
+  

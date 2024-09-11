@@ -1,5 +1,8 @@
-import React from 'react'
+import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { SocialIcon } from 'react-social-icons'
+
 
 const socialIcons = [
   {
@@ -22,19 +25,30 @@ const socialIcons = [
 
 function Socials() {
   return (
-    <div className="flex justify-between">
-    {socialIcons.map((social, i) => (
-      <Image
-        key={i}
-        src={social.icon}
-        alt={social.name}
-        width={24} 
-        height={24}
-        className='mx-3 cursor-pointer hover:-translate-y-1 transition-transform duration-300' 
-      />
-    ))}
-  </div>
-  )
+    <div className="flex items-center flex-col space-y-4">
+      <SocialIcon network="github" />
+      <SocialIcon network="instagram" />
+      <SocialIcon network="linkedin" />
+      <SocialIcon network="whatsapp" />
+
+      {/* {socialIcons.map((social, i) => (
+        <motion.div
+          key={i}
+          className="flex justify-center items-center w-12 h-12 rounded-full bg-blue-500 p-2 shadow-lg"
+          whileHover={{ scale: 1.1, rotate: 10 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Image
+            src={social.icon}
+            alt={social.name}
+            width={32}
+            height={32}
+            className="text-white"
+          />
+        </motion.div>
+      ))} */}
+    </div>
+  );
 }
 
-export default Socials
+export default Socials;
