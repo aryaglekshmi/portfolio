@@ -25,6 +25,10 @@ const socialIcons = [
 
 function Socials() {
   return (
+    <div className="fixed right-0 bottom-32 flex flex-col h-full justify-between items-center px-5">
+        <div className="flex-1 flex items-end">
+         
+       
     <div className="flex items-center flex-col space-y-4">
       <SocialIcon network="github" />
       <SocialIcon network="instagram" />
@@ -47,6 +51,8 @@ function Socials() {
           />
         </motion.div>
       ))} */}
+    </div>
+    </div>
     </div>
   );
 }

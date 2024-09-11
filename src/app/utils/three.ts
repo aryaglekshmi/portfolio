@@ -157,23 +157,22 @@ function bgSnow() {
 
       const init = () => {
         for (let i = 0; i < 50; i++) {
-          const geometry = new THREE.SphereGeometry(1, 32, 32);
-          const material = new THREE.MeshStandardMaterial({
+          const bubbleGeometry = new THREE.SphereGeometry(1, 32, 32);
+          const bubbleMaterial = new THREE.MeshStandardMaterial({
             color: 0x1e3a8a, // Dark blue color
             transparent: true,
             opacity: 0.5, // Slightly more transparent for a bubble effect
             wireframe: false,
           });
-          const bubble = new THREE.Mesh(geometry, material);
+          const bubble = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
           bubble.userData.speedRotation = Math.random() * 0.1;
           bubble.userData.positionX = mathRandom();
           bubble.userData.positionY = mathRandom();
           bubble.userData.positionZ = mathRandom();
           bubble.castShadow = true;
           bubble.receiveShadow = true;
-
-          const newScaleValue = mathRandom(0.1);
-
+      
+          const newScaleValue = mathRandom(0.05);
           bubble.scale.set(newScaleValue, newScaleValue, newScaleValue);
           bubble.rotation.x = mathRandom((180 * Math.PI) / 180);
           bubble.rotation.y = mathRandom((180 * Math.PI) / 180);
@@ -183,9 +182,29 @@ function bgSnow() {
             bubble.userData.positionY,
             bubble.userData.positionZ
           );
+      
           modularGroup.add(bubble);
+      
+          // Create a geometry with points for the line, relative to the bubble's position
+          const points = [
+            new THREE.Vector3(bubble.userData.positionX - 10, bubble.userData.positionY, bubble.userData.positionZ),
+            new THREE.Vector3(bubble.userData.positionX + 10, bubble.userData.positionY, bubble.userData.positionZ)
+          ];
+      
+          // Create a BufferGeometry and set the points
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      
+          // Define the material for the line
+          const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+      
+          // Create a line from the geometry and material
+          const line = new THREE.Line(geometry, material);
+      
+          // Add the line to the scene
+          modularGroup.add(line);
         }
       };
+      
 
 
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); // Softer white light

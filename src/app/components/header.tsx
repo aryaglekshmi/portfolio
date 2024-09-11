@@ -9,7 +9,8 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 function Header() {
   const path = usePathname();
   const routes = [
-    { href: "/", label: "Home" },
+    { href: "/", label: "AnimatedHome" },
+    { href: "/home", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
@@ -24,9 +25,9 @@ function Header() {
   };
 
   return (
-    <div className="sticky top-0 py-2 text-base flex justify-between items-center px-20 flex-none shadow-sm">
+    <div className="fixed top-0 py-2 text-base flex justify-between items-center px-20 flex-none shadow-sm">
       <div>
-        <Image src="/logo.svg" alt="Logo" width={90} height={90} />
+        {/* <Image src="/logo.svg" alt="Logo" width={90} height={90} /> */}
       </div>
       <div className="flex-grow justify-end flex items-center">
         <ul className="flex">
