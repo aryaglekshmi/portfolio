@@ -1,57 +1,55 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from 'next/image';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { routes } from "../utils/store"; // Adjust the path as needed
 
 function Header() {
-  const path = usePathname();
-  const routes = [
-    { href: "/", label: "AnimatedHome" },
-    { href: "/home", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
-  ];
+  const [path,setPath] = useState(location.hash);
+
+  useEffect(()=>{
+      setPath(location.hash)
+  },[location])
 
   const [searchQuery, setSearchQuery] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark-mode', !isDarkMode);
+    document.body.classList.toggle("dark-mode", !isDarkMode);
   };
 
   return (
-    <div className="fixed top-0 py-2 text-base flex justify-between items-center px-20 flex-none shadow-sm">
+    <div className="fixed w-full top-0 py-2 text-base flex justify-between items-center px-20 flex-none shadow-sm">
       <div>
-        {/* <Image src="/logo.svg" alt="Logo" width={90} height={90} /> */}
+        <motion.span
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          ARYA_GG
+        </motion.span>
       </div>
       <div className="flex-grow justify-end flex items-center">
         <ul className="flex">
-          {routes.map((route, ind) => (
+          {routes.map((route) => (
             <li
-              key={ind}
-              className={`${ind === 0 ? "mr-4" : "mx-4"} ${
-                path === route.href ? "border-gradient" : ""
-              }`}
+              key={route.href}
+              className={`mx-4 ${path === '#'+route.href ? "border-gradient" : ""}`}
             >
-              <Link href={route.href}>{route.label}</Link>
+              <motion.a
+                href={`#${route.href}`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+                className="block"
+              >
+                {route.label}
+              </motion.a>
             </li>
           ))}
         </ul>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search..."
-          className="border p-2 rounded mx-4"
-        />
-        <button onClick={toggleTheme} className="p-2">
-          {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
-        </button>
       </div>
     </div>
   );

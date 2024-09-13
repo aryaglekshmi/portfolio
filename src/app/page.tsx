@@ -1,15 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { routes } from './utils/store'; // Adjust the path as needed
 
 function AnimatedHome() {
+
   return (
     <div>
-      <section className='h-screen pt-[60px]'>Hero</section>
-      <section className='h-screen pt-[60px]'>Parallax</section>
-      <section className='h-screen pt-[60px]'>Services</section>
-      <section className='h-screen pt-[60px]'>Portfolio</section>
-      <section className='h-screen pt-[60px]'>Contact</section>
+      {routes.map(section => (
+        <section id={section.href} className="h-screen pt-[60px]">
+          {section.label}
+        </section>
+      ))}
     </div>
-  )
+  );
 }
 
-export default AnimatedHome
+export default AnimatedHome;
