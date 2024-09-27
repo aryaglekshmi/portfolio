@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+        primary: "var(--font-jetbrainsMono)",     
+    },
     extend: {
       colors: {
         black: "#0D0D0D",

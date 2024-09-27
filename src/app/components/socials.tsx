@@ -25,7 +25,7 @@ const socialIcons = [
 
 function Socials() {
   return (
-    <div className="fixed right-0 bottom-32 flex flex-col h-full justify-between items-center px-5">
+    <div className="fixed left-0 bottom-32 flex flex-col h-full justify-between items-center px-5">
         <div className="flex-1 flex items-end">
          
        

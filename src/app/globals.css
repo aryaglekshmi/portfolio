@@ -2,18 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-primary
+  }
+}
+
 .border-gradient {
     border-bottom: 2px solid;
-    border-image: linear-gradient(to right, #00c6ff, #0072ff) 1;
+    border-image: linear-gradient(to right, purple, #9f82c0) 1;
 }
 .border-top-gradient {
     border-top: 1px solid;
     border-image: linear-gradient(to right, #00c6ff, #0072ff) 1;
 }
 .bg-primary {
-    background-color: #0c0c1d;
+    /* background-color: #0c0c1d; */
     color: lightgray;
-    /* background: linear-gradient(to bottom, #f7f7f7, #9dbbdf); */
+    background: linear-gradient(180deg,#0c0c1d,#111132);
 }
 
 .bgImg {
@@ -22,11 +28,8 @@
     background-size: cover;
 }
 
-.swiper {
-    height: 100%;
-}
 .text-primary {
-    color: #0b366a;
+    color: #fff;
 }
 .box {
     width: 200px;
@@ -38,9 +41,29 @@
   html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   section {
     scroll-snap-align: center;
   }
-
   
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #8f7ba8; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: yellow; 
+  }

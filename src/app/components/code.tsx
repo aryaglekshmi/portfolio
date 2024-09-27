@@ -4,7 +4,7 @@ import React from "react";
 function CodeSnippet() {
   return (
     <div className="h-full flex justify-center items-center">
-      <div className="flex flex-row"><div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div><div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div></div>
+      <div className="flex flex-row"><div className="h-[1px] w-full bg-primary-to-r from-transparent via-pink-500 to-violet-600"></div><div className="h-[1px] w-full bg-primary-to-r from-violet-600 to-transparent"></div></div>
       <div className="px-4 lg:px-8 py-5"><div className="flex flex-row space-x-2"><div className="h-3 w-3 rounded-full bg-red-400"></div><div className="h-3 w-3 rounded-full bg-orange-400"></div><div className="h-3 w-3 rounded-full bg-green-200"></div></div></div>
       <code
         className="font-mono text-xs md:text-sm lg:text-base p-4 rounded"
