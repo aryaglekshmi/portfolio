@@ -15,6 +15,11 @@ const config: Config = {
         black: "#0D0D0D",
         white: "#FFFFFF",
         light: "#F7F7F7",
+        primary: '#1c1c22',
+        accent: {
+          DEFAULT: '#00FF99',
+          hover: '#00e187',
+        }
       },
     },
   },

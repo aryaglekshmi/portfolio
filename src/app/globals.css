@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply font-primary
+    @apply bg-primary text-white leading-loose;
+    font-family: monospace;
   }
 }
 
@@ -47,23 +48,24 @@
     scroll-snap-align: center;
   }
   
-/* width */
+/* Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    border-radius: 5px;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #8f7ba8; 
-    border-radius: 5px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: yellow; 
-  }
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0f7ef; /* Light accent color for the track */
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #51b48d; /* Main accent color for the handle */
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff99; /* Lighter accent color on hover */
+}

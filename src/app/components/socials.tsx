@@ -1,59 +1,80 @@
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { SocialIcon } from 'react-social-icons'
-
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 const socialIcons = [
   {
     name: "Instagram",
-    icon: "/instagram.svg",
+    icon: <FaInstagram />,
+    path: "",
   },
   {
     name: "LinkedIn",
-    icon: "/linkedin.svg",
+    icon: <FaLinkedin />,
+    path: "https://www.linkedin.com/in/aryalekshmi-g-developer",
   },
   {
     name: "WhatsApp",
-    icon: "/whatsapp.svg",
+    icon: <FaWhatsapp />,
+    path: "",
   },
   {
     name: "Github",
-    icon: "/github.svg",
+    icon: <FaGithub />,
+    path: "https://github.com/aryaglekshmi",
   },
 ];
 
-function Socials() {
-  return (
-    <div className="fixed left-0 bottom-32 flex flex-col h-full justify-between items-center px-5">
-        <div className="flex-1 flex items-end">
-         
-       
-    <div className="flex items-center flex-col space-y-4">
-      <SocialIcon network="github" />
-      <SocialIcon network="instagram" />
-      <SocialIcon network="linkedin" />
-      <SocialIcon network="whatsapp" />
+interface SocialsProps {
+  column?: boolean;
+}
 
-      {/* {socialIcons.map((social, i) => (
-        <motion.div
-          key={i}
-          className="flex justify-center items-center w-12 h-12 rounded-full bg-blue-500 p-2 shadow-lg"
-          whileHover={{ scale: 1.1, rotate: 10 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Image
-            src={social.icon}
-            alt={social.name}
-            width={32}
-            height={32}
-            className="text-white"
-          />
-        </motion.div>
-      ))} */}
-    </div>
-    </div>
-    </div>
+const textVariant = {
+  initial: {
+    x: 500,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+function Socials({ column }: SocialsProps) {
+  return (
+    // <div className="fixed right-0 bottom-32 flex flex-col justify-between items-center px-5">
+    //   <div className="flex-1 flex items-end">
+    <motion.div
+      className={`flex items-center gap-4 mx-2 ${column ? "flex-col" : ""}`}
+    >
+      {socialIcons.map((social, ind) => {
+        return (
+          <motion.a
+          target="_blank"
+          rel="noopener noreferrer"
+            key={ind}
+            href={social.path}
+            variants={textVariant}
+            initial="initial"
+            animate="animate"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            className="w-10 h-10 border border-accent rounded-full flex items-center justify-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
+          >
+            {social.icon}
+          </motion.a>
+        );
+      })}
+    </motion.div>
+    //   </div>
+    // </div>
   );
 }
 

@@ -1,20 +1,23 @@
-import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+"use client";
+import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Socials from "./components/socials";
+import PageTransition from "./components/pageTransition";
+import StairEffect from "./components/StairEffect";
+import useIsMobile from "./utils/useIsMobile";
+import { routes } from "./utils/store";
+import { motion, AnimatePresence, MotionConfig } from "framer-motion";
+import RightSideBar from "./components/rightSideBar";
+import { MobileContext } from "./utils/useIsMobile";
+import { PathContext, urlPath } from "./utils/PathContext";
 
-const jetBrains = JetBrains_Mono({
+const jetBrains = Space_Mono({
   subsets: ["latin"],
-  weight:['100','200','300','400','500','600','700','800'],
+  weight: ["400", "700"],
   variable: "--font-jetbrainsMono",
 });
-
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "GG Portfolio",
-};
 
 export default function RootLayout({
   children,
@@ -23,23 +26,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jetBrains.variable} bg-primary m-0 p-0 box-border`}>
-        {/* <div id="bgSnow" className="absolute inset-0 h-full w-full"></div> */}
-        {/* <div className="absolute bottom-0 left-0 transform rotate-180 opacity-50 z-0">
-        <img src="./sibe-bg.png" className="bg-contain opacity-50"/>
-      </div> */}
-        <div className="flex justify-between flex-col relative h-screen overflow-x-hidden">
-          <Header />
-          {/* <div className="px-20 w-full pb-5" style={{ height: 'calc(100% - 230px)' }}> */}
-          <div className="pl-20 w-full pb-5 overflow-y-auto overflow-x-hidden h-full">{children}</div>
-          <div className="fixed left-0 bottom-32 flex flex-col h-full justify-between items-center px-5">
-            <div className="flex-1 flex items-end">
-              <Socials />
+      <MobileContext.Provider value={useIsMobile()}>
+        <PathContext.Provider value={urlPath()}>
+          <body
+            className={`${jetBrains.variable} bg-primary m-0 p-0 box-border`}
+          >
+            <div className="flex justify-between flex-col relative h-screen overflow-xcd-hidden">
+              <Header />
+              <div className="w-full overflow-y-auto overflow-x-hidden h-full pl-20 pr-28 ">
+                <PageTransition>{children}</PageTransition>
+              </div>
+              <RightSideBar />
             </div>
-          </div>
-          {/* <Footer /> */}
-        </div>
-      </body>
+          </body>
+        </PathContext.Provider>
+      </MobileContext.Provider>
     </html>
   );
 }

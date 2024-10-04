@@ -2,19 +2,27 @@
 
 import React, { useEffect, useState } from "react";
 import { routes } from "./utils/store"; // Adjust the path as needed
+import { useRouter } from "next/navigation";
 
 function AnimatedHome() {
   const [hash, setHash] = useState(""); // Store the hash in state
+  const router = useRouter();
 
   useEffect(() => {
     // Function to update the hash state
     const updateHash = () => {
-      setHash(window.location.hash);
+      const currentHash = window.location.hash;
+      if (!currentHash) {
+        router.push(`${window.location.pathname}#home`);
+        setHash("#home");
+      } else {
+        setHash(currentHash);
+      }
     };
 
     // Set the initial hash value
     if (typeof window !== "undefined") {
-      setHash(window.location.hash); // Get the hash from the URL
+      updateHash(); // Get the hash from the URL
     }
 
     // Listen for hash changes

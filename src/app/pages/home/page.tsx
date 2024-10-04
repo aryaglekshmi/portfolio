@@ -1,0 +1,114 @@
+"use client";
+import { useContext } from "react";
+import { motion } from "framer-motion";
+import { MobileContext } from "@/app/utils/useIsMobile";
+import { FiDownload } from "react-icons/fi";
+import Photo from "@/app/components/photo";
+import Status from "@/app/components/status";
+
+const textVariant = {
+  initial: {
+    x: -500,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.1,
+    },
+  },
+  scrollButton: {
+    opacity: 0,
+    y: 10,
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+    },
+  },
+};
+
+const sliderVariant = {
+  initial: {
+    x: 0,
+  },
+  animate: {
+    x: "-220%",
+    transition: {
+      duration: 10,
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  },
+};
+
+export default function Home() {
+  const isMobile = useContext(MobileContext);
+  return (
+    <div className="h-full relative overflowd-hidden ">
+      <div className="h-full flex flex-col mx-auto container">
+        <div
+          className={`flex justify-between flex-1 w-full flex-col md:flex-row `}
+        >
+          <motion.div
+            className="mx-auto container flex justify-center flex-col h-full gap-y-6 order-2 md:order-none"
+            variants={textVariant}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.h3
+              className={`tracking-[.2em] ${
+                isMobile ? "text-xl" : "text-3xl"
+              } text-white`}
+              variants={textVariant}
+            >
+              Software Developer
+            </motion.h3>
+            <motion.h1
+              className={`font-bold text-3xl tracking-[.15em] md:text-5xl md:tracking-[.25em] text-accent `}
+              variants={textVariant}
+            >
+              ARYALEKSHMI G
+            </motion.h1>
+            <motion.p className={` ${
+                isMobile ? "text-lg" : "text-3xl"
+              } italic`} variants={textVariant}>
+              Always learning and evolving.
+            </motion.p>
+            <div className="flex">
+              <motion.button
+                variants={textVariant}
+                type="button"
+                className="text-black text-base max-w-[200px] bg-accent focus:outline-none font-medium rounded-full py-3 px-5 text-center flex justify-between mr-4"
+              >
+                <span>Download CV</span>{" "}
+                <FiDownload size={20} className="ml-2" />
+              </motion.button>
+              {/* <Socials column={false}/> */}
+            </div>
+            {/* <motion.img src="/scroll.png" alt="Scroll" className="h-10 w-10" variants={textVariant} animate="scrollButton" /> */}
+          </motion.div>
+          <div className="flex justify-end items-end order-1 md:order-none">
+            <Photo />
+            {/* <motion.svg className="w-[300px] xl:w-[586px] h-[300px] xl:h-[586px]" fill="transparent"
+          viewBox="0 0 506 506" xmlns="http://www.w3.org/2000/svg">
+<motion.circle cx="253" cy="253" r="250" stroke="#00ff99" strokeWidth="4"/>
+          </motion.svg> */}
+          </div>
+        </div>
+       <div className="pt-2 pb-8"> <Status /></div>
+      </div>
+      <motion.div
+        className={`absolute bottom-0 whitespace-nowrap text-purple-50 opacity-5 font-bold w-screen ${
+          isMobile ? "text-[20vh]" : "text-[40vh]"
+        }`}
+        variants={sliderVariant}
+        initial="initial"
+        animate="animate"
+      >
+        Code with a Smile
+      </motion.div>
+    </div>
+  );
+}
