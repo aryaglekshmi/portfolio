@@ -13,14 +13,14 @@ function Photo() {
         opacity:1,
         transition: { delay:2,duration:0.4,ease:'easeInOut'}
       }}>
-          {/* <Image
+          <Image
             src="/arya.png"
             priority
             quality={100}
             fill
             alt="Image"
             className="object-contain"
-          /> */}
+          />
         </motion.div>
       </motion.div>
     </div>

@@ -14,7 +14,7 @@ const tabs = [
 ];
 
 function About() {
-  const [selected, setSelected] = useState("about");
+  const [selected, setSelected] = useState(tabs[0].value);
   const isMobile = useContext(MobileContext);
 
   return (
@@ -23,7 +23,7 @@ function About() {
         isMobile ? "flex-col" : ""
       }`}
     >
-      <div className={`${isMobile ? "w-full" : "w-[40%]"}`}>
+      <div className={`py-10 ${isMobile ? "w-full" : "w-[40%]"}`}>
         {tabs.map((tab, ind) => {
           return (
             <div
@@ -42,7 +42,7 @@ function About() {
         })}
       </div>
 
-      <div className={`${isMobile ? "w-full" : "w-[60%]"}`}>
+      <div className={`py-10 ${isMobile ? "w-full" : "w-[60%]"}`}>
         {selected === "experience" ? (
           <Experience />
         ) : selected === "education" ? (

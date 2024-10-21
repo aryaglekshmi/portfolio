@@ -33,7 +33,7 @@ export default function RootLayout({
           >
             <div className="flex justify-between flex-col relative h-screen overflow-xcd-hidden">
               <Header />
-              <div className="w-full overflow-y-auto overflow-x-hidden h-full pl-20 pr-28 ">
+              <div className="w-full overflow-y-auto overflow-x-hidden h-full lg:pl-20 lg:pr-28 px-20">
                 <PageTransition>{children}</PageTransition>
               </div>
               <RightSideBar />

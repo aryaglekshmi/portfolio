@@ -49,7 +49,7 @@ export default function Home() {
     <div className="h-full relative overflowd-hidden ">
       <div className="h-full flex flex-col mx-auto container">
         <div
-          className={`flex justify-between flex-1 w-full flex-col md:flex-row `}
+          className={`flex justify-between flex-1 w-full flex-col md:flex-row z-10`}
         >
           <motion.div
             className="mx-auto container flex justify-center flex-col h-full gap-y-6 order-2 md:order-none"
@@ -71,20 +71,23 @@ export default function Home() {
             >
               ARYALEKSHMI G
             </motion.h1>
-            <motion.p className={` ${
-                isMobile ? "text-lg" : "text-3xl"
-              } italic`} variants={textVariant}>
+            <motion.p
+              className={` ${isMobile ? "text-lg" : "text-3xl"} italic`}
+              variants={textVariant}
+            >
               Always learning and evolving.
             </motion.p>
             <div className="flex">
-              <motion.button
+              <motion.a
+                download
+                href="/Resume.pdf"
                 variants={textVariant}
                 type="button"
-                className="text-black text-base max-w-[200px] bg-accent focus:outline-none font-medium rounded-full py-3 px-5 text-center flex justify-between mr-4"
+                className="text-black text-base max-w-[200px] bg-accent/80 focus:outline-none font-medium rounded-full py-3 px-5 text-center flex justify-between mr-4 cursor-pointer"
               >
-                <span>Download CV</span>{" "}
+                Download CV
                 <FiDownload size={20} className="ml-2" />
-              </motion.button>
+              </motion.a>
               {/* <Socials column={false}/> */}
             </div>
             {/* <motion.img src="/scroll.png" alt="Scroll" className="h-10 w-10" variants={textVariant} animate="scrollButton" /> */}
@@ -97,7 +100,10 @@ export default function Home() {
           </motion.svg> */}
           </div>
         </div>
-       <div className="pt-2 pb-8"> <Status /></div>
+        <div className="pt-2 pb-8">
+          {" "}
+          <Status />
+        </div>
       </div>
       <motion.div
         className={`absolute bottom-0 whitespace-nowrap text-purple-50 opacity-5 font-bold w-screen ${

@@ -69,3 +69,31 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #00ff99; /* Lighter accent color on hover */
 }
+.text-stroke {
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: rgb(211, 211, 211);
+}
+.corner-border{
+  --s: 50px; /* the size on the corner */
+  
+  padding: 30px; /* the gap between the border and image */
+  border: 5px solid rgb(0 255 153 / 0.6); /* the thickness and color */
+  -webkit-mask:
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+    0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+    linear-gradient(#000 0 0) content-box;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply !bg-accent;
+}
+.swiper-pagination-bullet {
+  @apply !bg-white;
+}
+.swiper-pagination {
+  @apply flex justify-center items-center gap-5 !relative lg:pt-16 pt-10 w-full;
+}
+.swiper-custom-bullet {
+  @apply w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white cursor-pointer;
+}
+
