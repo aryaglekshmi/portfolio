@@ -10,8 +10,8 @@ function RightSideBar() {
   const isMobile = useContext(MobileContext);
 
   return (
-    <div className="fixed right-0 flex flex-col justify-between items-center h-full p-2">
-      {isMobile && (
+    <div className="fixed right-1 flex flex-col justify-between items-center h-full p-2">
+      {/* {isMobile && (
         <motion.ul
           variants={{
             hide: {
@@ -47,7 +47,7 @@ function RightSideBar() {
             </li>
           ))}
         </motion.ul>
-      )}
+      )} */}
       {/* {isMobile && ( */}
         <div className="flex-1 flex items-end pb-20">
           <Socials column={true} />

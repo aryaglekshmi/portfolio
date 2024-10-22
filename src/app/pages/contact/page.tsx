@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { easeIn } from "framer-motion/dom";
 import React, { useEffect, useState } from "react";
-import { FaEnvelope, FaHome, FaPhone } from "react-icons/fa";
-import { FaLocationPin } from "react-icons/fa6";
+import { FaEnvelope, FaHome, FaPhoneAlt } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoHomeSharp } from "react-icons/io5";
+
 
 function Contact() {
 
@@ -39,22 +41,23 @@ function Contact() {
   const contacts = [
     {
       text: 'Phone',
-      icon: <FaPhone />,
-      value: ['+971 556057887', '+91 8086924467']
+      icon: <FaPhoneAlt />,
+      value: '+971 556057887, +91 8086924467'
     },
     {
       text: 'Email',
       icon: <FaEnvelope />,
-      value: 'aryaglekshmi@gmail.com'
+      value: 'aryaglekshmi@gmail.com',
+      onClick: () => { window.location.href = 'mailto:aryalekshmi@gmail.com'; }
     },
     {
       text: 'Address',
-      icon: <FaLocationPin />,
+      icon: <FaLocationDot  />,
       value: 'Dubai, UAE'
     },
     {
       text: 'Home Address',
-      icon: <FaHome />,
+      icon: <IoHomeSharp  />,
       value: 'Kollam, Kerala, India'
     }
   ];
@@ -67,9 +70,9 @@ function Contact() {
         x: 0,
         transition: { delay: 0.4, duration: 0.8, ease: "easeIn" },
       }}
-      className="py-6"
+      className="lg:min-h-[80vh] min-h-[70vh] flex flex-col justify-center py-12 px-10 xl:px-0"
     >
-      <div className="container mx-auto h-full flex justify-center gap-4 lg:flex-row flex-col-reverse">
+      <div className="container mx-auto h-full flex justify-center items-center gap-4 lg:flex-row flex-col">
         <div className="p-6 flex flex-col gap-4 bg-[#27272c] ">
           <h2 className="font-bold text-xl text-accent">{displayedText}</h2>
           <p className="text-white/80 text-base">
@@ -88,7 +91,7 @@ function Contact() {
                 placeholder="Name"
                 // value={formData.name}
                 // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/70 outline-none text-black"
+                className="w-full p-2 rounded bg-white/85 outline-none text-black"
                 required
               />
             </div>
@@ -103,7 +106,7 @@ function Contact() {
                 placeholder="Email"
                 // value={formData.email}
                 // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/70 outline-none text-black"
+                className="w-full p-2 rounded bg-white/85 outline-none text-black"
                 required
               />
             </div>
@@ -118,13 +121,13 @@ function Contact() {
                 placeholder="Phone number"
                 // value={formData.phone}
                 // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/70 outline-none text-black"
+                className="w-full p-2 rounded bg-white/85 outline-none text-black"
                 required
               />
             </div>
             <div>
               <label htmlFor="message" className="block text-white mb-2">
-                Share your thoughts!{" "}
+                Share your thoughts!
               </label>
               <textarea
                 id="message"
@@ -132,7 +135,7 @@ function Contact() {
                 placeholder="Message"
                 // value={formData.message}
                 // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/70 outline-none text-black"
+                className="w-full p-2 rounded bg-white/85 outline-none text-black"
                 rows={5}
                 required
               ></textarea>
@@ -150,17 +153,17 @@ function Contact() {
         <div className="flex flex-col lg:pl-10 pt-6">
           {contacts.map((contact, ind) => (
             <div
-              className="flex text-base w-full py-5"
+              className="flex text-base w-full py-5 items-center"
               key={ind}
-            >
+              onClick={contact.onClick ? contact.onClick : undefined}
+              >
               <span
-                className="h-10 w-10 bg-[#27272c] flex items-center 
-            justify-center text-accent text-xl hover:bg-accent hover:text-primary hover:transition-all duration-500"
+                className="h-12 w-12 bg-[#27272c] flex items-center 
+            justify-center text-accent text-2xl hover:bg-accent hover:text-primary hover:transition-all duration-500"
               >
                 {contact.icon}
               </span>
-              <span className="pl-10">
-                <p>{contact.text}</p>
+              <span className="pl-6">
                 <p>{contact.value}</p>
               </span>
             </div>

@@ -12,7 +12,7 @@ function Header() {
   const path = useContext(PathContext);
 
   return (
-    <div className="fixed w-full top-0 py-4 text-base px-20 flex-none shadow-sm z-10 bg-primary">
+    <div className="fixed w-full top-0 py-4 text-base px-10 md:px-20 flex-none z-20 bg-[#0c0c1d] shadow-lg">
       
       <div className="flex justify-between items-center mx-auto container ">
         <div>
@@ -25,14 +25,13 @@ function Header() {
             ARYA<span className="text-accent">_</span>GG
           </motion.span>
         </div>
-        {
-        !isMobile &&  
+
         <div className="flex-grow justify-end flex items-center">
           <ul className="flex">
             {routes.map((route) => (
               <li
                 key={route.href}
-                className={`mx-4 ${
+                className={`mx-4 pb-2 ${
                   ((!path && route.href === 'home') || path === "#" + route.href) ? "border-accent border-b text-accent" : ""
                 }`}
               >
@@ -41,15 +40,18 @@ function Header() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
-                  className="block"
+                  className="flex justify-between items-center"
                 >
-                  {route.label}
+                  <route.icon size={20} title={route.label}/>
+               {
+                !isMobile &&   <span className="pl-2"> {route.label}</span>
+               }
                 </motion.a>
               </li>
             ))}
           </ul>
         </div>
-}
+
       </div>
     </div>
   );

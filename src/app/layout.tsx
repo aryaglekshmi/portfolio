@@ -2,13 +2,8 @@
 import { Space_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
-import Footer from "./components/footer";
-import Socials from "./components/socials";
 import PageTransition from "./components/pageTransition";
-import StairEffect from "./components/StairEffect";
 import useIsMobile from "./utils/useIsMobile";
-import { routes } from "./utils/store";
-import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import RightSideBar from "./components/rightSideBar";
 import { MobileContext } from "./utils/useIsMobile";
 import { PathContext, urlPath } from "./utils/PathContext";
@@ -17,6 +12,8 @@ const jetBrains = Space_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-jetbrainsMono",
+  display:'swap',
+  adjustFontFallback:false
 });
 
 export default function RootLayout({
@@ -31,9 +28,9 @@ export default function RootLayout({
           <body
             className={`${jetBrains.variable} bg-primary m-0 p-0 box-border`}
           >
-            <div className="flex justify-between flex-col relative h-screen overflow-xcd-hidden">
+            <div className="flex justify-between relative h-screen overflow-xcd-hidden">
               <Header />
-              <div className="w-full overflow-y-auto overflow-x-hidden h-full lg:pl-20 lg:pr-28 px-20 ">
+              <div className="w-full overflow-y-auto overflow-x-hidden h-full lg:pl-20 lg:pr-28 px-10 ">
                 <PageTransition>{children}</PageTransition>
               </div>
               <RightSideBar />

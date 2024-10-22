@@ -38,7 +38,7 @@ const sliderVariant = {
     transition: {
       duration: 10,
       repeat: Infinity,
-      repeatType: "mirror",
+      repeatType: "reverse" as const, // Explicitly type the repeatType
     },
   },
 };
@@ -46,8 +46,11 @@ const sliderVariant = {
 export default function Home() {
   const isMobile = useContext(MobileContext);
   return (
-    <div className="h-full relative overflowd-hidden ">
-      <div className="h-full flex flex-col mx-auto container">
+    <div className="h-full relative flex flex-col md:flex-row">
+      <div className="flex justify-end items-end order-1 md:order-none md:w-1/2 p-4">
+        <Photo />
+      </div>
+      <div className="h-full flex flex-col mx-auto container order-2 md:order-none">
         <div
           className={`flex justify-between flex-1 w-full flex-col md:flex-row z-10`}
         >
@@ -92,22 +95,14 @@ export default function Home() {
             </div>
             {/* <motion.img src="/scroll.png" alt="Scroll" className="h-10 w-10" variants={textVariant} animate="scrollButton" /> */}
           </motion.div>
-          <div className="flex justify-end items-end order-1 md:order-none">
-            <Photo />
-            {/* <motion.svg className="w-[300px] xl:w-[586px] h-[300px] xl:h-[586px]" fill="transparent"
-          viewBox="0 0 506 506" xmlns="http://www.w3.org/2000/svg">
-<motion.circle cx="253" cy="253" r="250" stroke="#00ff99" strokeWidth="4"/>
-          </motion.svg> */}
-          </div>
         </div>
-        <div className="pt-2 pb-8">
-          {" "}
+        <div className="pt-4 pb-8">
           <Status />
         </div>
       </div>
       <motion.div
         className={`absolute bottom-0 whitespace-nowrap text-purple-50 opacity-5 font-bold w-screen ${
-          isMobile ? "text-[20vh]" : "text-[40vh]"
+          isMobile ? "text-[20vh]" : "text-[30vh]"
         }`}
         variants={sliderVariant}
         initial="initial"

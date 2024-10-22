@@ -66,25 +66,25 @@ function Skills() {
       animate="visible"
       className="flex flex-col gap-2 text-left justify-between"
     >
-      <div className="text-4xl font-bold flex">
+      <div className="text-2xl lg:text-4xl font-bold flex">
         {skills.icon} <span className="pl-3 pb-3">{skills.title}</span>
       </div>
       <p className="text-base">{skills.description}</p>
 
-      <div className="overflow-y-auto pt-10 flex flex-col gap-10 md:gap-20 justify-between">
+      <div className="overflow-y-auto overflow-x-hidden pt-10 flex flex-col gap-10 md:gap-20 justify-between">
         {skills.categories.map((category, index) => (
           <div key={index} className="relative">
             <div>
               <Swiper
                 className="flex flex-wrap"
-                spaceBetween={30}
+                spaceBetween={10}
                 loop={true}
                 autoplay={{
                   delay: 0,
                   disableOnInteraction: false,
                   pauseOnMouseEnter: true
                 }}
-                speed={3000}
+                speed={2500}
                 modules={[Autoplay]}
                 breakpoints={{
                   320: {
@@ -105,7 +105,7 @@ function Skills() {
                 {category.items.map((item, ind) => (
                   <SwiperSlide
                     key={ind}
-                    className="relative flex flex-col justify-center items-center lg:items-start gap-5"
+                    className="relative"
                   >
                     <motion.div
                       variants={skillCardVariants}

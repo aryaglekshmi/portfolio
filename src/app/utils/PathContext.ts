@@ -2,18 +2,25 @@
 import { createContext, useEffect, useState } from "react";
 
 export function urlPath(): string {
-  const [path, setPath] = useState(window.location.hash);
+  const [path, setPath] = useState("");
 
   useEffect(() => {
+    // Function to update the path state
     const handleHashChange = () => {
       setPath(window.location.hash);
     };
 
-    window.addEventListener("hashchange", handleHashChange);
+    // Check if window is defined
+    if (typeof window !== "undefined") {
+      setPath(window.location.hash); // Set initial path
+      window.addEventListener("hashchange", handleHashChange);
+    }
 
     // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("hashchange", handleHashChange);
+      }
     };
   }, []);
 

@@ -39,9 +39,9 @@ const experience = {
     },
     {
       role: "Frontend Developer",
-      company: "Belong Interactive, Dubai, UAE",
+      company: "Belong Interactive, Dubai, UAE (Freelance)",
       logo: "/belong-interactive.png",
-      duration: "Jun 2023 - Jul 2023 (Freelance)",
+      duration: "Jun 2023 - Jul 2023",
       duties: [
         "Translated design mockups into interactive web interfaces.",
         "Optimized frontend code for performance (because speed matters!).",
@@ -104,11 +104,11 @@ function Experience() {
                   className="absolute top-0 bottom-0 right-0 w-full opacity-10 bg-cover bg-center z-[-1]"
                   style={{ backgroundImage: `url(${exp.logo})` }}
                 ></div>
-                <div className="relative z-10 font-bold">
+                <div className="relative z-10">
                   <span className="text-accent">{exp.duration}</span>
                   <h3 className="text-xl text-left text-white">{exp.role}</h3>
-                  <span className="text-white">
-                    <span className="h-[6px] w-[6px] inline-block bg-accent rounded-full pr-2"></span>{" "}
+                  <span className="text-white text-base">
+                    <span className="h-[6px] w-[6px] inline-block bg-accent rounded-full mr-5"></span>
                     {exp.company}
                   </span>
                 </div>

@@ -20,11 +20,11 @@ const statistics = [
     num: 5,
     text: "Certifications"
   },
-  {
-    start: startYear - yrsOfExp,
-    num: startYear,
-    text: "Career Start"
-  },
+  // {
+  //   start: startYear - yrsOfExp,
+  //   num: startYear,
+  //   text: "Career Start"
+  // },
   // {
   //   start: 0,
   //   num: 8,
@@ -35,10 +35,10 @@ const statistics = [
 function Status() {
   return (
    <section>
-    <div className='flex flex-wrap gap-6 w-full p-4'>
+    <div className='flex flex-wrap gap-6 w-full p-4 flex-col md:flex-row'>
       {
         statistics.map((stats,ind)=> {
-           return <div key={ind} className='flex-1 mx-4 flex gap-6 items-center xl:justify-start'>
+           return <div key={ind} className='flex-1 mx-4 flex gap-6 items-center md:justify-start'>
             <CountUp
             start={stats.start}
             end={stats.num}

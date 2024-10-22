@@ -35,7 +35,6 @@ const projects = [
       "vue.js",
       "angular",
       "typescript",
-      "javascript",
       "html",
       "css",
       "mssql"
@@ -90,61 +89,61 @@ function Projects() {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="lg:min-h-[80vh] min-h-[70vh] flex flex-col justify-center py-12 xl:px-0"
+      className="lg:min-h-[80vh] min-h-[70vh] flex flex-col justify-center py-12 px-c10 xl:px-0"
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row xl:flex-wrap xl:gap-[30px] relative">
-          <div className="w-full flex flex-col corner-borderg">
+          <div className="w-full h-full flex flex-col corner-borderg relative">
             <Swiper
               loop={true}
-              slidesPerView={1}
-              modules={[Navigation, Pagination, Mousewheel]} // Add Pagination module
+              spaceBetween={30}
+              modules={[Navigation, Pagination, Mousewheel]}
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
               }}
-              // navigation
               mousewheel={true}
               pagination={{
-                el: ".swiper-pagination", // Specify the pagination element
-                clickable: true, // Make pagination clickable
-                renderBullet: (index, className) => {
-                  return `<span class="${className} swiper-custom-bullet">${
-                    index + 1
-                  }</span>`;
-                },
+                el: ".swiper-pagination",
+                clickable: true,
               }}
-              style={{ height: "100%", width: "100%" }} // Ensure proper sizing
+              style={{ width: "100%" }}
+              className="overflow-auto flex items-stretch"
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                },
+                480: {
+                  slidesPerView: 1,
+                },
+                769: {
+                  slidesPerView: 2,
+                },
+                // 1440: {
+                //   slidesPerView: 3, 
+                // },
+              }}
             >
               {projects.map((project, pInd) => (
                 <SwiperSlide
                   key={pInd}
-                  className="shadow-lg bg-dark rounded-lg  transition-all duration-400 cursor-pointer"
+                  className="shadow-lg bg-dark rounded-lg transition-all duration-400 cursor-pointer w-full h-full flex-grow"
                 >
-                  <div className="flex justify-between items-center flex-col lg:flex-row w-full gap-4">
-                    <div className="w-full lg:w-1/2">
-                      {/* Project ID */}
+                  {/* <div className="flex justify-between items-center flex-col lg:flex-row w-full gap-4"> */}
+                    <div className="w-full p-4 h-full">
                       <div className="text-5xl lg:text-7xl text-stroke text-transparent leading-none font-extrabold text-outline">
                         {project.id}
                       </div>
-
-                      {/* Project Title */}
                       <h2 className="font-bold text-xl lg:text-2xl leading-snug text-accent/90 transition-all duration-500 capitalize py-3">
                         {project.title}
                       </h2>
-
-                      {/* Project Duration */}
                       <p className="text-white/50 py-2 text-sm italic">
                         {project.duration}
                       </p>
-
-                      {/* Project Description */}
                       <p className="text-white/70 py-3 text-base leading-relaxed">
                         {project.description}
                       </p>
-
-                      {/* Stack (e.g., Vue, HTML, JavaScript) */}
-                      <ul className="flex gap-6 pt-6 flex-wrap">
+                      <ul className="flex gap-6 py-6 flex-wrap">
                         {project.stack.map((item, iInd) => (
                           <li
                             key={iInd}
@@ -159,28 +158,18 @@ function Projects() {
                         ))}
                       </ul>
                     </div>
-                    <div className="border border-dashed lg:h-96 border-accent/60 lg:mx-4 w-full lg:w-0"></div>
-
-                    {/* Key Responsibilities */}
-                    <ul className="text-white/70 text-base leading-relaxed space-y-2 w-full lg:w-1/2">
-                      {project.keyResponsibilities.map(
-                        (responsibility, rInd) => (
-                          <li key={rInd} className="w-full">* {responsibility}</li>
-                        )
-                      )}
-                    </ul>
-                  </div>
+                  {/* </div> */}
                 </SwiperSlide>
               ))}
             </Swiper>
-
-            <div className="swiper-pagination flex justify-center items-center gap-2"></div>
+            <div className="swiper-pagination flex justify-center items-center gap-2 flex-none !bottom-2 xl:mb-[-8rem] lg-[-6rem] mb-[-5rem]"></div>
           </div>
         </div>
       </div>
     </motion.section>
   );
 }
+
 
 
 export default Projects;

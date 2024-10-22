@@ -2,13 +2,12 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import Link from "next/link";
 
 const socialIcons = [
   {
     name: "Instagram",
     icon: <FaInstagram />,
-    path: "",
+    path: "https://www.instagram.com/arya_g_g/profilecard/?igsh=MTFsdjVlcmY2dnBibQ==",
   },
   {
     name: "LinkedIn",
@@ -18,7 +17,7 @@ const socialIcons = [
   {
     name: "WhatsApp",
     icon: <FaWhatsapp />,
-    path: "",
+    path: "https://wa.me/971556057887",
   },
   {
     name: "Github",

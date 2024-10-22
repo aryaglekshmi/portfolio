@@ -38,11 +38,11 @@ function Education() {
                 variants={cardVariants}
                 className="relative border border-accent/10 p-6 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
               >
-                <div className="relative z-10 font-bold">
+                <div className="relative z-10">
                   <span className="text-accent">{exp.duration}</span>
                   <h3 className="text-xl text-left text-white">{exp.degree}</h3>
-                  <span className="text-white">
-                    <span className="h-[6px] w-[6px] inline-block bg-accent rounded-full pr-2"></span>{" "}
+                  <span className="text-white text-base">
+                    <span className="h-[6px] w-[6px] inline-block bg-accent rounded-full mr-5"></span>
                     {exp.institution}
                   </span>
                 </div>

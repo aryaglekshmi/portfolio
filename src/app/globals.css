@@ -50,7 +50,7 @@
   
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 /* Track */
@@ -85,13 +85,10 @@
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  @apply !bg-accent;
+  @apply !bg-accent !h-3 !w-3;
 }
 .swiper-pagination-bullet {
   @apply !bg-white;
-}
-.swiper-pagination {
-  @apply flex justify-center items-center gap-5 !relative lg:pt-16 pt-10 w-full;
 }
 .swiper-custom-bullet {
   @apply w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white cursor-pointer;
