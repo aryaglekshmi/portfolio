@@ -88,13 +88,13 @@ function Skills() {
                 modules={[Autoplay]}
                 breakpoints={{
                   320: {
-                    slidesPerView: 1,
+                    slidesPerView: 2,
                   },
                   480: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                   },
                   769: {
-                    slidesPerView: 2,
+                    slidesPerView: 4,
                   },
                   1024: {
                     slidesPerView:

@@ -162,7 +162,7 @@ function Projects() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="swiper-pagination flex justify-center items-center gap-2 flex-none !bottom-2 xl:mb-[-8rem] lg-[-6rem] mb-[-5rem]"></div>
+            <div className="swiper-pagination flex justify-center items-center gap-2 flex-none !bottom-2 xl:mb-[-8rem] lg-[-6rem] mb-[-2rem]"></div>
           </div>
         </div>
       </div>

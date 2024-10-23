@@ -12,7 +12,7 @@ function Header() {
   const path = useContext(PathContext);
 
   return (
-    <div className="fixed w-full top-0 py-4 text-base px-10 md:px-20 flex-none z-20 bg-[#0c0c1d] shadow-lg">
+    <div className="fixed w-full top-0 py-4 text-base px-10 md:px-20 flex-none bg-[#0c0c1d] shadow-lg z-30">
       
       <div className="flex justify-between items-center mx-auto container ">
         <div>

@@ -28,8 +28,8 @@ function Photo() {
             src="/arya.png"
             priority
             quality={100}
-            height={isMobile ? 300 : 500}
-            width={isMobile ? 300 : 500}
+            height={window.innerHeight/2}
+            width={window.innerWidth/2}
             alt="Image"
             className="object-contain filter brightness-75 hover:brightness-100"
           />

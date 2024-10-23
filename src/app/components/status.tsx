@@ -35,7 +35,7 @@ const statistics = [
 function Status() {
   return (
    <section>
-    <div className='flex flex-wrap gap-6 w-full p-4 flex-col md:flex-row'>
+    <div className='flex flex-wrap gap-6 w-full p-4 flex-col md:flex-row items-center'>
       {
         statistics.map((stats,ind)=> {
            return <div key={ind} className='flex-1 mx-4 flex gap-6 items-center md:justify-start'>
@@ -44,10 +44,10 @@ function Status() {
             end={stats.num}
             duration={5}
             delay={2}
-            className='text-4xl xl:text-6xl font-extrabold whitespace-nowrap
+            className='text-4xl lg:text-5xl xl:text-6xl font-extrabold whitespace-nowrap
             leading-snug text-white/80'
             />
-            <p>{stats.text}</p>
+            <p className='md:text-base '>{stats.text}</p>
             </div>
         })
       }

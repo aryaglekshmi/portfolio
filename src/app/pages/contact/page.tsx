@@ -1,17 +1,19 @@
+import { IMail } from "@/app/utils/interfaces";
+import { sendMail } from "@/app/utils/sendMail";
 import { motion } from "framer-motion";
+import { p } from "framer-motion/client";
 import { easeIn } from "framer-motion/dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaEnvelope, FaHome, FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoHomeSharp } from "react-icons/io5";
 
-
 function Contact() {
-
   const text = "Let's work together";
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [index, setIndex] = useState(0);
+  const form = useRef(null);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -40,27 +42,44 @@ function Contact() {
 
   const contacts = [
     {
-      text: 'Phone',
+      text: "Phone",
       icon: <FaPhoneAlt />,
-      value: '+971 556057887, +91 8086924467'
+      value: ["+971 556057887", "+91 8086924467"],
     },
     {
-      text: 'Email',
+      text: "Email",
       icon: <FaEnvelope />,
-      value: 'aryaglekshmi@gmail.com',
-      onClick: () => { window.location.href = 'mailto:aryalekshmi@gmail.com'; }
+      value: "aryaglekshmi@gmail.com",
+      onClick: () => {
+        window.location.href = "mailto:aryalekshmi@gmail.com";
+      },
     },
     {
-      text: 'Address',
-      icon: <FaLocationDot  />,
-      value: 'Dubai, UAE'
+      text: "Address",
+      icon: <FaLocationDot />,
+      value: "Dubai, UAE",
     },
     {
-      text: 'Home Address',
-      icon: <IoHomeSharp  />,
-      value: 'Kollam, Kerala, India'
-    }
+      text: "Home Address",
+      icon: <IoHomeSharp />,
+      value: "Kollam, Kerala, India",
+    },
   ];
+  const [formData, setFormData] = useState({} as IMail);
+
+  async function handleFormSubmit(e: any) {
+    e.preventDefault();
+    const res = await sendMail(formData);
+    console.log("🚀 ~ go ~ res:", res)
+  
+  }
+
+  const updateFormData = (field: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+        ...formData,
+        [field]: e.target.value?.trim(),
+    });
+};
 
   return (
     <motion.section
@@ -68,60 +87,76 @@ function Contact() {
       animate={{
         opacity: 1,
         x: 0,
-        transition: { delay: 0.4, duration: 0.8, ease: "easeIn" },
+        transition: { delay: 0.2, duration: 0.5, ease: "easeIn" },
       }}
-      className="lg:min-h-[80vh] min-h-[70vh] flex flex-col justify-center py-12 px-10 xl:px-0"
+      className="lg:min-h-[80vh] min-h-[70vh] flex flex-col justify-center py-4 pr-5 lg:py-12 lg:px-10 xl:px-0"
     >
       <div className="container mx-auto h-full flex justify-center items-center gap-4 lg:flex-row flex-col">
         <div className="p-6 flex flex-col gap-4 bg-[#27272c] ">
           <h2 className="font-bold text-xl text-accent">{displayedText}</h2>
-          <p className="text-white/80 text-base">
+          <p className="text-white/80 md:text-base text-sm">
             Got a cool idea or project? Let’s make it happen together! Reach out
             and let’s create something awesome!
           </p>
-          <form className="flex flex-col gap-4 text-base">
+          <form
+            className="flex flex-col gap-4 text-base"
+            onSubmit={handleFormSubmit}
+            id="contactForm"
+            ref={form}
+          >
             <div>
               <label htmlFor="name" className="block text-white mb-2">
                 Your good name?
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="from_name"
+                name="from_name"
                 placeholder="Name"
-                // value={formData.name}
-                // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/85 outline-none text-black"
+                onChange={(e) => updateFormData('from_name', e)}               
+                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
                 required
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-white mb-2">
+              <label htmlFor="from_email" className="block text-white mb-2">
                 How can i connect?
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
+                type="from_email"
+                id="from_email"
+                name="from_email"
                 placeholder="Email"
-                // value={formData.email}
-                // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/85 outline-none text-black"
+                onChange={(e) => updateFormData('from_email', e)}               
+                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
                 required
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-white mb-2">
+              <label htmlFor="from_email" className="block text-white mb-2">
                 Contact number?
               </label>
               <input
-                type="phone"
-                id="phone"
-                name="phone"
+                type="from_phone"
+                id="from_phone"
+                name="from_phone"
                 placeholder="Phone number"
-                // value={formData.phone}
-                // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/85 outline-none text-black"
+                onChange={(e) => updateFormData('from_phone', e)}               
+                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="from_email" className="block text-white mb-2">
+                Subject
+              </label>
+              <input
+                type="subject"
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+                onChange={(e) => updateFormData('subject', e)}               
+                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
                 required
               />
             </div>
@@ -133,11 +168,10 @@ function Contact() {
                 id="message"
                 name="message"
                 placeholder="Message"
-                // value={formData.message}
-                // onChange={handleChange}
-                className="w-full p-2 rounded bg-white/85 outline-none text-black"
-                rows={5}
+                onChange={(e) => updateFormData('message', e)}               
+                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
                 required
+                rows={5}
               ></textarea>
             </div>
             <div className="text-right">
@@ -156,7 +190,7 @@ function Contact() {
               className="flex text-base w-full py-5 items-center"
               key={ind}
               onClick={contact.onClick ? contact.onClick : undefined}
-              >
+            >
               <span
                 className="h-12 w-12 bg-[#27272c] flex items-center 
             justify-center text-accent text-2xl hover:bg-accent hover:text-primary hover:transition-all duration-500"
@@ -164,7 +198,14 @@ function Contact() {
                 {contact.icon}
               </span>
               <span className="pl-6">
-                <p>{contact.value}</p>
+               
+                {
+                  Array.isArray(contact.value) ? 
+                  contact.value.map((v,ind)=>(
+                   <p key={ind}>{v}</p>
+                  ))
+                  :  <p>{contact.value}</p>
+                }
               </span>
             </div>
           ))}

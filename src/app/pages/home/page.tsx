@@ -46,16 +46,16 @@ const sliderVariant = {
 export default function Home() {
   const isMobile = useContext(MobileContext);
   return (
-    <div className="h-full relative flex flex-col md:flex-row">
-      <div className="flex justify-end items-end order-1 md:order-none md:w-1/2 p-4">
+    <div className="h-full relative flex flex-col md:flex-row items-center md:items-end">
+      <div className="flex justify-end items-end order-1 md:order-none md:w-1/2 md:h-full p-4">
         <Photo />
       </div>
-      <div className="h-full flex flex-col mx-auto container order-2 md:order-none">
+      <div className="h-full flex flex-col mx-auto container order-2 md:order-none justify-center">
         <div
           className={`flex justify-between flex-1 w-full flex-col md:flex-row z-10`}
         >
           <motion.div
-            className="mx-auto container flex justify-center flex-col h-full gap-y-6 order-2 md:order-none"
+            className="mx-auto container flex justify-center flex-col h-full gap-y-6 order-2 md:order-none items-center md:items-start"
             variants={textVariant}
             initial="initial"
             animate="animate"
@@ -69,7 +69,7 @@ export default function Home() {
               Software Developer
             </motion.h3>
             <motion.h1
-              className={`font-bold text-3xl tracking-[.15em] md:text-5xl md:tracking-[.25em] text-accent `}
+              className={`font-bold text-3xl tracking-[.15em] lg:text-5xl md:text-4xl md:tracking-[.25em] text-accent `}
               variants={textVariant}
             >
               ARYALEKSHMI G
