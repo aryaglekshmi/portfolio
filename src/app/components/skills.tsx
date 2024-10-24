@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
-import React, { useContext, useState } from "react";
+import React, {  } from "react";
 import { FaTools } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import { MobileContext } from "../utils/useIsMobile";
 import { ISkill, techStacks } from "../utils/contants";
 
-const iconUrl = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
 const skills = {
   title: "Skills",
   icon: <FaTools color="#00ff99" />,

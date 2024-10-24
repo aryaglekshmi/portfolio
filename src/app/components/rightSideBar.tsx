@@ -1,12 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Socials from "./socials";
-import { motion } from "framer-motion";
-import { routes } from "../utils/store";
-import { PathContext } from "../utils/PathContext";
 import { MobileContext } from "../utils/useIsMobile";
 
 function RightSideBar() {
-  const path = useContext(PathContext);
   const isMobile = useContext(MobileContext);
 
   return (

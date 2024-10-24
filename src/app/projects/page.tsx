@@ -1,12 +1,15 @@
+"use client"
+
 import { ISkill, techStacks } from "@/app/utils/contants";
-import { motion, useMotionValue } from "framer-motion";
-import React, { useState } from "react";
-import { A11y, Autoplay, EffectFlip, Mousewheel, Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { motion } from "framer-motion";
+import React from "react";
+import { Mousewheel, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import Image from "next/image";
 
 
 const projects = [
@@ -149,9 +152,11 @@ function Projects() {
                             key={iInd}
                             className="text-xl text-accent transition-transform duration-300 hover:scale-110"
                           >
-                            <img
+                            <Image
                               src={getTechSkill(item).icon}
                               alt={getTechSkill(item).name}
+                              width={20}
+                              height={20}
                               className="h-12 w-12 object-contain"
                             />
                           </li>

@@ -1,3 +1,4 @@
+"use client";
 import { MobileContext } from "@/app/utils/useIsMobile";
 import React, { useContext, useState } from "react";
 import Skills from "@/app/components/skills";

@@ -7,3 +7,10 @@ export interface IMail {
   subject: string;
   reply_to: string;
 }
+
+export interface ISkill {
+  name: string,
+  id:string,
+  icon:string,
+  href:string
+}

@@ -91,7 +91,6 @@ export default function Home() {
                 Download CV
                 <FiDownload size={20} className="ml-2" />
               </motion.a>
-              {/* <Socials column={false}/> */}
             </div>
             {/* <motion.img src="/scroll.png" alt="Scroll" className="h-10 w-10" variants={textVariant} animate="scrollButton" /> */}
           </motion.div>

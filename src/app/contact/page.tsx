@@ -1,10 +1,9 @@
+"use client"
 import { IMail } from "@/app/utils/interfaces";
 import { sendMail } from "@/app/utils/sendMail";
 import { motion } from "framer-motion";
-import { p } from "framer-motion/client";
-import { easeIn } from "framer-motion/dom";
 import React, { useEffect, useRef, useState } from "react";
-import { FaEnvelope, FaHome, FaPhoneAlt } from "react-icons/fa";
+import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoHomeSharp } from "react-icons/io5";
 
@@ -74,7 +73,7 @@ function Contact() {
   
   }
 
-  const updateFormData = (field: string, e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateFormData = (field: string, e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
     setFormData({
         ...formData,
         [field]: e.target.value?.trim(),
@@ -89,11 +88,11 @@ function Contact() {
         x: 0,
         transition: { delay: 0.2, duration: 0.5, ease: "easeIn" },
       }}
-      className="lg:min-h-[80vh] min-h-[70vh] flex flex-col justify-center py-4 pr-5 lg:py-12 lg:px-10 xl:px-0"
+      className="py-4 pr-6 lg:py-12 lg:px-10 xl:px-0 h-full"
     >
-      <div className="container mx-auto h-full flex justify-center items-center gap-4 lg:flex-row flex-col">
-        <div className="p-6 flex flex-col gap-4 bg-[#27272c] ">
-          <h2 className="font-bold text-xl text-accent">{displayedText}</h2>
+      <div className="lg:h-full flex justify-center items-center gap-4 lg:flex-row flex-col">
+        <div className="p-6 flex flex-col gap-4 bg-[#27272c] rounded-lg">
+          <h2 className="font-bold text-xl md:text-2xl text-accent pt-4 ">{displayedText}</h2>
           <p className="text-white/80 md:text-base text-sm">
             Got a cool idea or project? Let’s make it happen together! Reach out
             and let’s create something awesome!
@@ -168,7 +167,7 @@ function Contact() {
                 id="message"
                 name="message"
                 placeholder="Message"
-                onChange={(e) => updateFormData('message', e)}               
+                onChange={(e) => updateFormData('message', e)}                        
                 className="w-full p-2 rounded bg-[#333333] outline-none text-black"
                 required
                 rows={5}

@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { routes } from "../utils/store"; // Adjust the path as needed
 import { MobileContext } from "../utils/useIsMobile";
-import { PathContext } from "../utils/PathContext";
+import { usePathname } from "next/navigation";
 
 function Header() {
 
   const isMobile = useContext(MobileContext);
-  const path = useContext(PathContext);
-
+  const path = usePathname();
+ 
   return (
-    <div className="fixed w-full top-0 py-4 text-base px-10 md:px-20 flex-none bg-[#0c0c1d] shadow-lg z-30">
+    <div className="fixed w-full top-0 md:py-6 py-4 text-base px-10 md:px-20 flex-none bg-[#0c0c1d] shadow-lg z-30">
       
       <div className="flex justify-between items-center mx-auto container ">
         <div>
@@ -32,19 +32,19 @@ function Header() {
               <li
                 key={route.href}
                 className={`mx-4 pb-2 ${
-                  ((!path && route.href === 'home') || path === "#" + route.href) ? "border-accent border-b text-accent" : ""
+                  ((!path && route.href === 'home') || path === "/" + route.href) ? "border-accent border-b text-accent" : ""
                 }`}
               >
                 <motion.a
-                  href={`#${route.href}`}
+                  href={`${route.href}`}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
                   className="flex justify-between items-center"
                 >
-                  <route.icon size={20} title={route.label}/>
+                  <route.icon size={20} title={route.label}/> 
                {
-                !isMobile &&   <span className="pl-2"> {route.label}</span>
+                !isMobile && <span className="pl-2"> {route.label}</span>
                }
                 </motion.a>
               </li>

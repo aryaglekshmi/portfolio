@@ -1,14 +1,10 @@
+import { ISkill } from "./interfaces";
+
 export const cardVariants = {
   hidden: { opacity: 0, y: -50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-export interface ISkill {
-  name: string,
-  id:string,
-  icon:string,
-  href:string
-}
 const iconUrl = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
 
 export const techStacks: ISkill[] = [

@@ -4,8 +4,17 @@ import React from "react";
 function CodeSnippet() {
   return (
     <div className="h-full flex justify-center items-center">
-      <div className="flex flex-row"><div className="h-[1px] w-full bg-primary-to-r from-transparent via-pink-500 to-violet-600"></div><div className="h-[1px] w-full bg-primary-to-r from-violet-600 to-transparent"></div></div>
-      <div className="px-4 lg:px-8 py-5"><div className="flex flex-row space-x-2"><div className="h-3 w-3 rounded-full bg-red-400"></div><div className="h-3 w-3 rounded-full bg-orange-400"></div><div className="h-3 w-3 rounded-full bg-green-200"></div></div></div>
+      <div className="flex flex-row">
+        <div className="h-[1px] w-full bg-primary-to-r from-transparent via-pink-500 to-violet-600"></div>
+        <div className="h-[1px] w-full bg-primary-to-r from-violet-600 to-transparent"></div>
+      </div>
+      <div className="px-4 lg:px-8 py-5">
+        <div className="flex flex-row space-x-2">
+          <div className="h-3 w-3 rounded-full bg-red-400"></div>
+          <div className="h-3 w-3 rounded-full bg-orange-400"></div>
+          <div className="h-3 w-3 rounded-full bg-green-200"></div>
+        </div>
+      </div>
       <code
         className="font-mono text-xs md:text-sm lg:text-base p-4 rounded"
         style={{ backgroundColor: "#1e2a38" }}
@@ -18,59 +27,59 @@ function CodeSnippet() {
         </div>
         <div>
           <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
-          <span className="text-gray-400">{`'`}</span>
+          <span className="text-gray-400">&apos;</span>
           <span className="text-yellow-300">Aryalekshmi G</span>
-          <span className="text-gray-400">{`',`}</span>
+          <span className="text-gray-400">&apos;,</span>
         </div>
         <div>
           <span className="ml-4 lg:ml-8 mr-2 text-white">yearsOfExperience:</span>
-          <span className="text-gray-400">{`'`}</span>
+          <span className="text-gray-400">&apos;</span>
           <span className="text-yellow-300">5+</span>
-          <span className="text-gray-400">{`',`}</span>
+          <span className="text-gray-400">&apos;,</span>
         </div>
         <div className="ml-4 lg:ml-8 mr-2">
           <span className="text-white">frontendExpert:</span>
-          <span className="text-gray-400">{`['`}</span>
+          <span className="text-gray-400">[&apos;</span>
           <span className="text-yellow-300">React</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">Vue</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">Angular</span>
-          <span className="text-gray-400">{"'],`"}</span>
+          <span className="text-gray-400">&apos;],</span>
         </div>
         <div className="ml-4 lg:ml-8 mr-2">
           <span className="text-white">backendExploring:</span>
-          <span className="text-gray-400">{`['`}</span>
+          <span className="text-gray-400">[&apos;</span>
           <span className="text-yellow-300">Node.js</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">Express</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">NestJS</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">C#</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">.NET</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">JAVA</span>
-          <span className="text-gray-400">{"'],`"}</span>
+          <span className="text-gray-400">&apos;],</span>
         </div>
         <div className="ml-4 lg:ml-8 mr-2">
           <span className="text-white">dbs:</span>
-          <span className="text-gray-400">{`['`}</span>
+          <span className="text-gray-400">[&apos;</span>
           <span className="text-yellow-300">MongoDB</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">MySQL</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">PostgreSQL</span>
-          <span className="text-gray-400">{"'],`"}</span>
+          <span className="text-gray-400">&apos;],</span>
         </div>
         <div className="ml-4 lg:ml-8 mr-2">
           <span className="text-white">toolbox:</span>
-          <span className="text-gray-400">{`['`}</span>
+          <span className="text-gray-400">[&apos;</span>
           <span className="text-yellow-300">Docker</span>
-          <span className="text-gray-400">{"', '"}</span>
+          <span className="text-gray-400">&apos;, &apos;</span>
           <span className="text-yellow-300">Git</span>
-          <span className="text-gray-400">{"'],`"}</span>
+          <span className="text-gray-400">&apos;],</span>
         </div>
         <div>
           <span className="ml-4 lg:ml-8 mr-2 text-white">passionForCode:</span>
@@ -95,11 +104,11 @@ function CodeSnippet() {
         <div>
           <span className="ml-4 lg:ml-8 mr-2 text-teal-400">welcome:</span>
           <span className="text-green-400">function</span>
-          <span className="text-gray-400">{"() {"}</span>
+          <span className="text-gray-400">{`() {`}</span>
         </div>
         <div>
           <span className="ml-4 lg:ml-8 mr-2 text-teal-400"></span>
-          <span className="text-white ml-10 lg:ml-15">console.log("Hello Arya's World");</span>
+          <span className="text-white ml-10 lg:ml-15">console.log(&quot;Hello Arya&apos;s World&quot;);</span>
         </div>
         <div>
           <span className="ml-4 lg:ml-8 text-gray-400">{`},`}</span>
@@ -107,7 +116,7 @@ function CodeSnippet() {
         <div>
           <span className="ml-4 lg:ml-8 mr-2 text-teal-400">hireable:</span>
           <span className="text-green-400">function</span>
-          <span className="text-gray-400">{"() {"}</span>
+          <span className="text-gray-400">{`() {`}</span>
         </div>
         <div>
           <span className="ml-8 lg:ml-16 mr-2 text-green-400">return</span>

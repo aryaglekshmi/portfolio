@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MobileContext } from "@/app/utils/useIsMobile";
 
 
 function Photo() {
-  const isMobile = useContext(MobileContext);
 
   return (
     <div className="w-full h-full relative mb-5 lg:mb-0 bottom-0 z-20">
