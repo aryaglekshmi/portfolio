@@ -27,7 +27,6 @@ function Photo() {
             src="/arya.png"
             priority
             quality={100}
-            fill
             height={global?.window ? window.innerHeight/2 : 500}
             width={global?.window ? window.innerWidth/2 : 500}
             alt="Image"
