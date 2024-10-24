@@ -1,6 +1,6 @@
 "use client"
 
-import { ISkill, techStacks } from "@/app/utils/contants";
+import { techStacks } from "@/app/utils/contants";
 import { motion } from "framer-motion";
 import React from "react";
 import { Mousewheel, Navigation, Pagination } from "swiper/modules";
@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Image from "next/image";
+import { ISkill } from "../utils/interfaces";
 
 
 const projects = [

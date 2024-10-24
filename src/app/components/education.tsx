@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import React from "react";
 import { FaGraduationCap } from "react-icons/fa";

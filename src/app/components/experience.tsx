@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { cardVariants } from "../utils/contants";
 import { motion } from "framer-motion";

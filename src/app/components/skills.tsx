@@ -1,10 +1,12 @@
+"use client"
 import { motion } from "framer-motion";
 import React, {  } from "react";
 import { FaTools } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import { ISkill, techStacks } from "../utils/contants";
+import { techStacks } from "../utils/contants";
+import { ISkill } from "../utils/interfaces";
 
 const skills = {
   title: "Skills",

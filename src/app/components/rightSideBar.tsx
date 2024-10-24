@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext } from "react";
 import Socials from "./socials";
 import { MobileContext } from "../utils/useIsMobile";

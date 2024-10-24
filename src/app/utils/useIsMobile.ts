@@ -2,8 +2,8 @@
 import { createContext, useEffect, useState } from "react";
 
 export default function useIsMobile(): boolean {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
+  
+  const [isMobile, setIsMobile] = useState(global?.window && window.innerWidth <= 768);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);

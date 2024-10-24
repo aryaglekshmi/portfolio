@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -26,8 +27,9 @@ function Photo() {
             src="/arya.png"
             priority
             quality={100}
-            height={window.innerHeight/2}
-            width={window.innerWidth/2}
+            fill
+            height={global?.window ? window.innerHeight/2 : 500}
+            width={global?.window ? window.innerWidth/2 : 500}
             alt="Image"
             className="object-contain filter brightness-75 hover:brightness-100"
           />
