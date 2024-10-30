@@ -43,7 +43,7 @@ function About() {
         })}
       </div>
 
-      <div className={`py-10 ${isMobile ? "w-full" : "w-[60%]"}`}>
+      <div className={`py-10  ${isMobile ? "w-full" : "w-[60%]"}`}>
         {selected === "experience" ? (
           <Experience />
         ) : selected === "education" ? (

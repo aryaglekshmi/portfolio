@@ -21,7 +21,7 @@ const projects = [
       "Migrated 80% of Broadcom API Gateway to a custom implementation, enhancing performance and scalability.",
     duration: "Nov 2021 - Mar 2023",
     stack: ["react", "node.js", "java", "javascript", "html", "jira"],
-    keyResponsibilities: [
+    responsibilities: [
       "Coordinated with teams to gather requirements and deliver solutions.",
       "Analyzed traffic with Looker and Grafana; troubleshot issues.",
       "Managed a remote team of 5 members for effective collaboration.",
@@ -43,7 +43,7 @@ const projects = [
       "css",
       "mssql"
     ],    
-    keyResponsibilities: [
+    responsibilities: [
       "Maintained the real-time Discovery Viewer app.",
       "Created reusable UI components with Angular.",
       "Resolved 90% of SonarQube bugs for improved code quality.",
@@ -58,7 +58,7 @@ const projects = [
       "Designed a data sync app to transfer data from one source to multiple targets, optimized the user experience.",
     duration: "Feb 2020 - Jun 2020",
     stack: ["node.js", "typescript", "javascript", "html", "css", "mssql"],
-    keyResponsibilities: [
+    responsibilities: [
       "Developed a data synchronizer for multiple targets.",
       "Created user interfaces with HTML and TypeScript.",
       "Enhanced user experience with target selection pages.",
@@ -73,7 +73,7 @@ const projects = [
       "Developed a planning and simulation tool for DOP operations, reducing production bugs by 40%.",
     duration: "Feb 2019 - Feb 2020",
     stack: ["vue.js", "typescript", "javascript", "html", "css", "mssql"],
-    keyResponsibilities: [
+    responsibilities: [
       "Developed an app for planning DOP operations.",
       "Built user interfaces with Vue and integrated functionality.",
       "Performed unit testing and code reviews.",

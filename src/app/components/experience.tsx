@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { cardVariants } from "../utils/contants";
 import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
 
@@ -16,12 +15,12 @@ const experience = {
       duration: "Jun 2024 - Present",
       logo: "/pinnacle.png",
       duties: [
-        "Developed and maintained web applications using Vue.js and Node.js.",
-        "Enhanced user experiences with responsive designs.",
-        "Integrated external APIs like a pro.",
-        "Conducted thorough testing and debugging (and survived!).",
-        "Implemented security measures to keep the bad guys out.",
-        "Stayed updated with the latest tech trends (because who doesn't love shiny new tools?).",
+        "Built web apps with Vue.js and Node.js.",
+        "Improved UX with responsive designs.",
+        "Integrated third-party APIs.",
+        "Performed testing and debugging.",
+        "Enhanced security measures.",
+        "Kept up with tech trends.",
       ],
     },
     {
@@ -30,12 +29,12 @@ const experience = {
       duration: "Jul 2023 - Jun 2024",
       logo: "/nathan.jfif",
       duties: [
-        "Developed and maintained web applications using Vue.js and Node.js.",
-        "Enhanced user experiences with responsive designs.",
-        "Integrated external APIs like a pro.",
-        "Conducted thorough testing and debugging (and survived!).",
-        "Implemented security measures to keep the bad guys out.",
-        "Stayed updated with the latest tech trends (because who doesn't love shiny new tools?).",
+        "Developed full-stack web applications.",
+        "Created responsive user interfaces.",
+        "Connected external APIs.",
+        "Executed thorough testing.",
+        "Implemented robust security protocols.",
+        "Explored new technologies.",
       ],
     },
     {
@@ -44,11 +43,11 @@ const experience = {
       logo: "/belong-interactive.png",
       duration: "Jun 2023 - Jul 2023",
       duties: [
-        "Translated design mockups into interactive web interfaces.",
-        "Optimized frontend code for performance (because speed matters!).",
-        "Collaborated with UI/UX designers to make things pretty.",
-        "Implemented accessibility standards (because everyone deserves a great web experience).",
-        "Ensured cross-browser compatibility (even for that one person still using IE).",
+        "Converted designs into web interfaces.",
+        "Optimized frontend performance.",
+        "Worked with UI/UX designers.",
+        "Ensured accessibility standards.",
+        "Maintained cross-browser compatibility.",
       ],
     },
     {
@@ -57,11 +56,11 @@ const experience = {
       logo: "/tcs.png",
       duration: "Nov 2021 - Mar 2023",
       duties: [
-        "Administered and maintained enterprise-level systems.",
-        "Automated tasks to save time (and sanity).",
-        "Collaborated across teams for infrastructure upgrades.",
-        "Provided technical support (and lots of it).",
-        "Led successful migration projects (like a boss).",
+        "Managed enterprise systems.",
+        "Automated routine tasks.",
+        "Upgraded infrastructure.",
+        "Provided technical support.",
+        "Led system migrations.",
       ],
     },
     {
@@ -70,53 +69,83 @@ const experience = {
       logo: "/shellsquare.jfif",
       duration: "Feb 2019 - Oct 2021",
       duties: [
-        "Developed reusable and scalable code using Angular and Vue.js.",
-        "Conducted comprehensive unit testing and debugging.",
-        "Collaborated with backend developers to integrate RESTful APIs.",
-        "Ensured cross-device and cross-browser functionality.",
-        "Actively participated in code reviews (and survived the feedback).",
+        "Developed reusable code with Angular and Vue.js.",
+        "Conducted unit testing and debugging.",
+        "Integrated RESTful APIs.",
+        "Ensured cross-device functionality.",
+        "Participated in code reviews.",
       ],
     },
   ],
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Adjust the delay between each child animation
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 function Experience() {
   return (
     <motion.div
+      className="flex flex-col gap-2 text-left h-full"
       initial="hidden"
       animate="visible"
-      className="flex flex-col gap-2 text-left"
+      variants={containerVariants}
     >
       <div className="text-4xl font-bold flex">
         {experience.icon} <span className="pl-3 pb-3">{experience.title}</span>
       </div>
       <p className="text-base">{experience.description}</p>
 
-      <div className="overflow-y-auto pt-10">
-        <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {experience.items.map((exp, ind) => {
-            return (
-              <motion.li
-                key={ind}
-                variants={cardVariants}
-                className="relative border border-accent/10 p-6 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+      <div className="overflow-y-xauto my-8 flex-auto relative flex justify-center items-center">
+        <motion.ul
+          className="flex flex-col gap-8 justify-center items-center timeline w-full"
+        >
+          {experience.items.map((exp, ind) => (
+            <motion.li
+              key={ind}
+              variants={cardVariants}
+              className="relative w-full rounded-xl flex flex-col justify-center items-center lg:items-start gap-1 shadow-lg p-4 text-white"
+            >
+              <div
+                className={`flex w-full gap-y-2 gap-x-10 ${
+                  ind % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                }`}
               >
                 <div
-                  className="absolute top-0 bottom-0 right-0 w-full opacity-10 bg-cover bg-center z-[-1]"
-                  style={{ backgroundImage: `url(${exp.logo})` }}
-                ></div>
-                <div className="relative z-10">
-                  <span className="text-accent">{exp.duration}</span>
-                  <h3 className="text-xl text-left text-white">{exp.role}</h3>
-                  <span className="text-white text-base">
-                    <span className="h-[6px] w-[6px] inline-block bg-accent rounded-full mr-5"></span>
-                    {exp.company}
-                  </span>
+                  className={`flex flex-col w-1/2 ${
+                    ind % 2 === 0 ? "items-end" : "items-start"
+                  }`}
+                >
+                  <span className="">{exp.duration}</span>
+                  <span className="text-accent font-bold text-base">{exp.role}</span>
+                  <span className="">{exp.company}</span>
                 </div>
-              </motion.li>
-            );
-          })}
-        </ul>
+                <div
+                  className={`flex w-1/2 ${
+                    ind % 2 === 0 ? "justify-start" : "justify-end"
+                  }`}
+                >
+                  <ul className="list-disc ml-3">
+                    {exp.duties.map((duty, dInd) => (
+                      <li key={dInd}>{duty}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.li>
+          ))}
+        </motion.ul>
       </div>
     </motion.div>
   );

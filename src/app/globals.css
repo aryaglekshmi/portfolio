@@ -102,4 +102,12 @@
 .swiper-custom-bullet {
   @apply w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white cursor-pointer;
 }
+/* .circle::after {
+  content: '';
+  @apply w-10 h-10 border rounded-full flex items-center justify-center absolute bottom-0;
+} */
+.timeline::before {
+  content: "";
+  @apply absolute top-0 bottom-0 w-1 bg-accent/50;
+}
 
