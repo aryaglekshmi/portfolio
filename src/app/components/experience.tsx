@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
+import Image from "next/image";
 
 const experience = {
   title: "Experience",
@@ -40,7 +41,7 @@ const experience = {
     {
       role: "Frontend Developer",
       company: "Belong Interactive, Dubai, UAE (Freelance)",
-      logo: "/belong-interactive.png",
+      logo: "/belong-interactive.jpg",
       duration: "Jun 2023 - Jul 2023",
       duties: [
         "Converted designs into web interfaces.",
@@ -53,7 +54,7 @@ const experience = {
     {
       role: "Software Developer",
       company: "Tata Consultancy Services, Kerala, India",
-      logo: "/tcs.png",
+      logo: "/tcs.jfif",
       duration: "Nov 2021 - Mar 2023",
       duties: [
         "Managed enterprise systems.",
@@ -84,7 +85,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Adjust the delay between each child animation
+      staggerChildren: 0.5, // Adjust the delay between each child animation
     },
   },
 };
@@ -108,9 +109,7 @@ function Experience() {
       <p className="text-base">{experience.description}</p>
 
       <div className="overflow-y-xauto my-8 flex-auto relative flex justify-center items-center">
-        <motion.ul
-          className="flex flex-col gap-8 justify-center items-center timeline w-full"
-        >
+        <motion.ul className="flex flex-col gap-8 justify-center items-center timeline w-full">
           {experience.items.map((exp, ind) => (
             <motion.li
               key={ind}
@@ -128,19 +127,26 @@ function Experience() {
                   }`}
                 >
                   <span className="">{exp.duration}</span>
-                  <span className="text-accent font-bold text-base">{exp.role}</span>
+                  <span className="text-accent font-bold text-base">
+                    {exp.role}
+                  </span>
                   <span className="">{exp.company}</span>
+                  <div
+                    className="h-10 w-10 rounded-full bg-cover bg-no-repeat bg-center"
+                    style={{ backgroundImage: `url(${exp.logo})` }}
+                  ></div>
                 </div>
+
                 <div
                   className={`flex w-1/2 ${
                     ind % 2 === 0 ? "justify-start" : "justify-end"
                   }`}
                 >
-                  <ul className="list-disc ml-3">
+                  {/* <ul className="list-disc ml-3">
                     {exp.duties.map((duty, dInd) => (
                       <li key={dInd}>{duty}</li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </motion.li>

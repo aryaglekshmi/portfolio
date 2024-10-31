@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useContext } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { routes } from "../utils/store"; // Adjust the path as needed
-import { MobileContext } from "../utils/useIsMobile";
 import { usePathname } from "next/navigation";
 
 function Header() {
 
-  const isMobile = useContext(MobileContext);
   const path = usePathname();
  
   return (
@@ -43,9 +41,7 @@ function Header() {
                   className="flex justify-between items-center"
                 >
                   <route.icon size={20} title={route.label}/> 
-               {
-                !isMobile && <span className="pl-2"> {route.label}</span>
-               }
+                 <span className="pl-2 hidden md:block"> {route.label}</span>
                 </motion.a>
               </li>
             ))}

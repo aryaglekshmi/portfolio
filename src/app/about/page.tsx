@@ -1,6 +1,5 @@
 "use client";
-import { MobileContext } from "@/app/utils/useIsMobile";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Skills from "@/app/components/skills";
 import Education from "@/app/components/education";
 import Experience from "@/app/components/experience";
@@ -16,15 +15,12 @@ const tabs = [
 
 function About() {
   const [selected, setSelected] = useState(tabs[0].value);
-  const isMobile = useContext(MobileContext);
 
   return (
     <div
-      className={`flex pt-10 gap-8 container mx-auto h-full ${
-        isMobile ? "flex-col" : ""
-      }`}
+      className={`flex pt-10 gap-8 container mx-auto h-full md:flex-row flex-col`}
     >
-      <div className={`py-10 ${isMobile ? "w-full" : "w-[40%]"}`}>
+      <div className={`py-10 w-full md:w-[40%]`}>
         {tabs.map((tab, ind) => {
           return (
             <div
@@ -43,7 +39,7 @@ function About() {
         })}
       </div>
 
-      <div className={`py-10  ${isMobile ? "w-full" : "w-[60%]"}`}>
+      <div className={`py-10 w-full md:w-[60%]`}>
         {selected === "experience" ? (
           <Experience />
         ) : selected === "education" ? (

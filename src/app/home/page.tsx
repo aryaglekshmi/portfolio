@@ -1,7 +1,5 @@
 "use client";
-import { useContext } from "react";
 import { motion } from "framer-motion";
-import { MobileContext } from "@/app/utils/useIsMobile";
 import { FiDownload } from "react-icons/fi";
 import Photo from "@/app/components/photo";
 import Status from "@/app/components/status";
@@ -44,7 +42,6 @@ const sliderVariant = {
 };
 
 export default function Home() {
-  const isMobile = useContext(MobileContext);
   return (
     <div className="h-full relative flex flex-col md:flex-row items-center md:items-end">
       <div className="flex justify-end items-end order-1 md:order-none md:w-1/2 md:h-full p-4">
@@ -61,9 +58,7 @@ export default function Home() {
             animate="animate"
           >
             <motion.h3
-              className={`tracking-[.2em] ${
-                isMobile ? "text-xl" : "text-3xl"
-              } text-white`}
+              className={`tracking-[.2em] md:text-3xl text-xl text-white`}
               variants={textVariant}
             >
               Software Developer
@@ -75,7 +70,7 @@ export default function Home() {
               ARYALEKSHMI G
             </motion.h1>
             <motion.p
-              className={` ${isMobile ? "text-lg" : "text-3xl"} italic`}
+              className={`md:text-3xl text-lg italic`}
               variants={textVariant}
             >
               Always learning and evolving.
@@ -100,9 +95,7 @@ export default function Home() {
         </div>
       </div>
       <motion.div
-        className={`absolute bottom-0 whitespace-nowrap text-purple-50 opacity-5 font-bold w-screen ${
-          isMobile ? "text-[20vh]" : "text-[30vh]"
-        }`}
+        className={`absolute bottom-0 whitespace-nowrap text-purple-50 opacity-5 font-bold w-screen md:text-[30vh] text-[20vh]`}
         variants={sliderVariant}
         initial="initial"
         animate="animate"
