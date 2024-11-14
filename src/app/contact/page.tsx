@@ -69,8 +69,6 @@ function Contact() {
   async function handleFormSubmit(e: any) {
     e.preventDefault();
     const res = await sendMail(formData);
-    console.log("🚀 ~ go ~ res:", res)
-  
   }
 
   const updateFormData = (field: string, e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
