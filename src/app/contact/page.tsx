@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { IMail } from "@/app/utils/interfaces";
 import { sendMail } from "@/app/utils/sendMail";
 import { motion } from "framer-motion";
@@ -12,7 +12,7 @@ function Contact() {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [index, setIndex] = useState(0);
-  const form = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -65,18 +65,45 @@ function Contact() {
     },
   ];
   const [formData, setFormData] = useState({} as IMail);
+  const [loading,setLoading] = useState(false);
 
   async function handleFormSubmit(e: any) {
     e.preventDefault();
-    const res = await sendMail(formData);
+    try {
+      setLoading(true);
+      const res = await sendMail(formData);
+      if (res?.success) {
+        resetFormData();
+        formRef.current?.reset();
+        window.alert(res.message || "Mail sent successfully!");
+      } else {
+        window.alert(
+          res.message || "Error while sending mail, Please try again later!"
+        );
+      }
+    } catch (err) {
+      console.log("🚀 ~ handleFormSubmit ~ err:", err);
+      window.alert("Error while sending mail, Please try again later!");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  const updateFormData = (field: string, e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  function resetFormData() {
+    for(const key in formData) {
+      formData[key as keyof IMail] = ''
+    }
+  }
+
+  const updateFormData = (
+    field: string,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
-        ...formData,
-        [field]: e.target.value?.trim(),
+      ...formData,
+      [field]: e.target.value?.trim(),
     });
-};
+  };
 
   return (
     <motion.section
@@ -90,7 +117,9 @@ function Contact() {
     >
       <div className="lg:h-full flex justify-center items-center gap-4 lg:flex-row flex-col">
         <div className="p-6 flex flex-col gap-4 bg-[#27272c] rounded-lg">
-          <h2 className="font-bold text-xl md:text-2xl text-accent pt-4 ">{displayedText}</h2>
+          <h2 className="font-bold text-xl md:text-2xl text-accent pt-4 ">
+            {displayedText}
+          </h2>
           <p className="text-white/80 md:text-base text-sm">
             Got a cool idea or project? Let’s make it happen together! Reach out
             and let’s create something awesome!
@@ -99,7 +128,7 @@ function Contact() {
             className="flex flex-col gap-4 text-base"
             onSubmit={handleFormSubmit}
             id="contactForm"
-            ref={form}
+            ref={formRef}
           >
             <div>
               <label htmlFor="name" className="block text-white mb-2">
@@ -110,8 +139,9 @@ function Contact() {
                 id="from_name"
                 name="from_name"
                 placeholder="Name"
-                onChange={(e) => updateFormData('from_name', e)}               
-                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
+                disabled={loading}
+                onChange={(e) => updateFormData("from_name", e)}
+                className="w-full p-2 rounded bg-[#333333] outline-none text-white/80"
                 required
               />
             </div>
@@ -124,8 +154,9 @@ function Contact() {
                 id="from_email"
                 name="from_email"
                 placeholder="Email"
-                onChange={(e) => updateFormData('from_email', e)}               
-                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
+                disabled={loading}
+                onChange={(e) => updateFormData("from_email", e)}
+                className="w-full p-2 rounded bg-[#333333] outline-none text-white/80"
                 required
               />
             </div>
@@ -138,8 +169,9 @@ function Contact() {
                 id="from_phone"
                 name="from_phone"
                 placeholder="Phone number"
-                onChange={(e) => updateFormData('from_phone', e)}               
-                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
+                disabled={loading}
+                onChange={(e) => updateFormData("from_phone", e)}
+                className="w-full p-2 rounded bg-[#333333] outline-none text-white/80"
                 required
               />
             </div>
@@ -152,8 +184,9 @@ function Contact() {
                 id="subject"
                 name="subject"
                 placeholder="Subject"
-                onChange={(e) => updateFormData('subject', e)}               
-                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
+                disabled={loading}
+                onChange={(e) => updateFormData("subject", e)}
+                className="w-full p-2 rounded bg-[#333333] outline-none text-white/80"
                 required
               />
             </div>
@@ -165,8 +198,9 @@ function Contact() {
                 id="message"
                 name="message"
                 placeholder="Message"
-                onChange={(e) => updateFormData('message', e)}                        
-                className="w-full p-2 rounded bg-[#333333] outline-none text-black"
+                disabled={loading}
+                onChange={(e) => updateFormData("message", e)}
+                className="w-full p-2 rounded bg-[#333333] outline-none text-white/80"
                 required
                 rows={5}
               ></textarea>
@@ -174,9 +208,36 @@ function Contact() {
             <div className="text-right">
               <button
                 type="submit"
+                disabled={loading}
                 className="py-2 px-4 bg-accent/50 text-white rounded hover:bg-accent-dark transition duration-300"
               >
-                Hit me up!
+                <div role="status" className="flex justify-between items-center">
+                <span className="pr-2">Hit me up!</span>
+               
+                  {
+                    loading && (
+                     <div>
+                       <svg
+                      aria-hidden="true"
+                      className="w-5 h-5 me-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
+                    </svg>
+                    <span className="sr-only">Loading...</span>
+                      </div>
+                    )
+                  }
+                </div>
               </button>
             </div>
           </form>
@@ -195,14 +256,11 @@ function Contact() {
                 {contact.icon}
               </span>
               <span className="pl-6">
-               
-                {
-                  Array.isArray(contact.value) ? 
-                  contact.value.map((v,ind)=>(
-                   <p key={ind}>{v}</p>
-                  ))
-                  :  <p>{contact.value}</p>
-                }
+                {Array.isArray(contact.value) ? (
+                  contact.value.map((v, ind) => <p key={ind}>{v}</p>)
+                ) : (
+                  <p>{contact.value}</p>
+                )}
               </span>
             </div>
           ))}
