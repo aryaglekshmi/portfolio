@@ -6,6 +6,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "swiper/css/effect-coverflow";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore from 'swiper';
+import { Autoplay, Navigation, Pagination, EffectCoverflow, Parallax } from "swiper/modules";
+SwiperCore.use([Navigation, Pagination, EffectCoverflow, Parallax]);
 
 interface Blog {
   id: number;
@@ -53,36 +58,75 @@ function Projects() {
       animate={{ opacity: 1 }}
       className="h-full w-full flex flex-col justify-center py-12 px-c10 xl:px-0"
     >
-      <div className="container mx-auto h-full">
-        <ul className="flex flex-wrap justify-center items-stretch gap-4">
+      <div className="container swiper-container  mx-auto h-full">
+        <Swiper
+          className="swiper-wrapper"
+          loop
+          slidesPerView={4}
+          centeredSlides
+          effect="coverflow"
+          grabCursor
+          parallax
+          pagination={{ clickable: true }}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          }}
+          speed={2500}
+          modules={[Autoplay]}
+          breakpoints={{
+            320: {
+              slidesPerView: 2,
+            },
+            480: {
+              slidesPerView: 3,
+            },
+            769: {
+              slidesPerView: 4,
+            },
+          }}
+        >
           {blogs.map((blog) => (
-            <li key={blog.id} className="w-full md:w-[45%] md:max-w-[45%] bg-[#27272c] flex-grow">
+            <SwiperSlide
+              key={blog.id}
+              className="swiper-slide w-full md:w-[60%] md:max-w-[60%] border-[#27272c] border flex-grow !h-[60%]"
+            >
               <div className="rounded-lg shadow-md relative h-full flex">
                 <div
                   style={{ backgroundImage: `url(${blog.cover_image})` }}
                   className="bg-contain bg-no-repeat bg-center h-full w-1/2 hidden md:block"
                 ></div>
                 <div className="py-5 flex flex-col px-4 justify-between">
-                  <h2 className="text-2xl text-accent font-semibold">
+                  <h3 className="text-2xl text-accent/70 font-semibold">
                     {blog.title}
-                  </h2>
-                  <p className="pt-2">{blog.description}</p>
-                  <div className="flex justify-between items-end mt-auto text-accent/60 pt-2">
-                    {formatDate(blog.published_at)}
-                    <a
-                      href={blog.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block underline cursor-pointer"
-                    >
-                      Read more
-                    </a>
+                  </h3>
+                  <div className="flex flex-col justify-between flex-auto h-full">
+                    <p className="pt-2 flex-auto text-truncate">{blog.description}</p>
+                    <div className="flex justify-between items-end text-accent/60 pt-2">
+                      {formatDate(blog.published_at)}
+                      <a
+                        href={blog.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block underline cursor-pointer"
+                      >
+                        Read more
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </li>
+            </SwiperSlide>
           ))}
-        </ul>
+        </Swiper>
       </div>
     </motion.section>
   );

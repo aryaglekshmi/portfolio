@@ -92,6 +92,9 @@
     0 0/calc(100% - var(--s)) calc(100% - var(--s)),
     linear-gradient(#000 0 0) content-box;
 }
+.swiper-wrapper {
+  @apply flex justify-center items-center;
+}
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   @apply !bg-accent !h-3 !w-3;
